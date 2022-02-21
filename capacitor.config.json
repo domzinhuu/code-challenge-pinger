@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "pinger-premier",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
