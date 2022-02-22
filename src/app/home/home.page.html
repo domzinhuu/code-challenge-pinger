@@ -1,20 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="football-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Pinger Premier </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="page-content">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" [sizeMd]="6">
+          <div class="animation-content">
+            <ng-lottie [options]="options"></ng-lottie>
+          </div>
+        </ion-col>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <ion-col size="12" [sizeMd]="6">
+          <div class="init-content">
+            <strong>Welcome to Pinger Premier!</strong>
+            <p>
+              See all information about your favorite team, see competition,
+              squad formation, season and much more.
+            </p>
+            <ion-button color="primary">See competition</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

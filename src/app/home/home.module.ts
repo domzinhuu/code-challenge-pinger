@@ -5,15 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
+export const playerFactory = () => player;
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
 export class HomePageModule {}
