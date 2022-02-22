@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,11 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class TeamService {
-  headers = new HttpHeaders();
-
-  constructor(private httpClient: HttpClient) {
-    this.headers.append('X-Auth-Token', '7f64a29067c24d3ead2d11afff83e7b1');
-  }
+  constructor(private httpClient: HttpClient) {}
 
   public getTeamsByCompetition(
     competitionID: number,
@@ -21,10 +17,7 @@ export class TeamService {
   ): Observable<Array<TeamClub>> {
     return this.httpClient
       .get<any>(
-        `${environment.apiUrl}/competitions/${competitionID}/teams?season=${season}`,
-        {
-          headers: this.headers,
-        }
+        `${environment.apiUrl}/competitions/${competitionID}/teams?season=${season}`
       )
       .pipe(map((res) => res.teams));
   }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://api.football-data.org/v2'
+  apiUrl: 'https://api.football-data.org/v2',
+  xAuthToken: '7f64a29067c24d3ead2d11afff83e7b1',
 };
 
 /*
