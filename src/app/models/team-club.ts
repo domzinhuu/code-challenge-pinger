@@ -1,5 +1,7 @@
 import { NumberValueAccessor } from '@angular/forms';
 import { Area } from './area';
+import { Player } from './booking';
+import { Competition } from './competition';
 
 export interface TeamClub {
   id: NumberValueAccessor;
@@ -16,4 +18,6 @@ export interface TeamClub {
   clubColors: string;
   venue: string;
   lastUpdated: string;
+  activeCompetitions?: Array<Competition>;
+  squad?: Array<Player>;
 }

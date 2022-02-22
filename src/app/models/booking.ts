@@ -8,6 +8,12 @@ export interface Booking {
 export interface Player {
   id: number;
   name: string;
+  position?: string;
+  dateOfBirth?: string;
+  countryOfBirth?: string;
+  nationality?: string;
+  shirtNumber?: string;
+  role?: string;
 }
 
 export interface Team {
