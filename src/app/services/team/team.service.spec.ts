@@ -1,27 +1,25 @@
 import { fakeAsync, TestBed } from '@angular/core/testing';
-import { Competition } from '../models/competition';
+import { TeamClub } from 'src/app/models/team-club';
 
-import { CompetitionService } from './competition.service';
+import { TeamService } from './team.service';
 import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { noop } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TeamClub } from '../models/team-club';
-import { mockCompetitions, mockTeams } from '../test/mocks/competition-mocks';
+import { noop } from 'rxjs';
+import { mockTeams } from 'src/app/test/mocks/competition-mocks';
 
-describe('CompetitionService', () => {
+describe('TeamService', () => {
   let httpTestingController: HttpTestingController;
-  let service: CompetitionService;
+  let service: TeamService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-
-    httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.inject(CompetitionService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(TeamService);
   });
 
   afterEach(() => {
@@ -31,18 +29,6 @@ describe('CompetitionService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('should be return a competition list', fakeAsync(() => {
-    service.getCompetitions().subscribe((res: Array<Competition>) => {
-      expect(res.length).toBeGreaterThan(1);
-    });
-
-    const req = httpTestingController.expectOne(
-      'https://api.football-data.org/v2/competitions?plan=TIER_ONE'
-    );
-
-    req.flush(mockCompetitions);
-  }));
 
   it('should be return a 404 error if the season dont exists in api', fakeAsync(() => {
     const season = 2018;

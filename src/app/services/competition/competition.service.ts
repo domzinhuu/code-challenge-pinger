@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Competition } from '../models/competition';
 import { map } from 'rxjs/operators';
-import { TeamClub } from '../models/team-club';
+import { Competition } from 'src/app/models/competition';
+import { TeamClub } from 'src/app/models/team-club';
 
 @Injectable({
   providedIn: 'root',
@@ -23,17 +23,5 @@ export class CompetitionService {
       .pipe(map((res) => res.competitions));
   }
 
-  public getTeamsByCompetition(
-    competitionID: number,
-    season: number
-  ): Observable<Array<TeamClub>> {
-    return this.httpClient
-      .get<any>(
-        `${environment.apiUrl}/competitions/${competitionID}/teams?season=${season}`,
-        {
-          headers: this.headers,
-        }
-      )
-      .pipe(map((res) => res.teams));
-  }
+
 }
