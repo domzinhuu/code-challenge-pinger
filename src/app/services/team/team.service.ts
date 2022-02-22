@@ -21,4 +21,8 @@ export class TeamService {
       )
       .pipe(map((res) => res.teams));
   }
+
+  public getTeamsDetail(teamID: number): Observable<TeamClub> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/team/${teamID}`);
+  }
 }
