@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Competition</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" fullscreen="true">
+<!--   <ion-card class="season-dropbox">
+    <ion-item>
+      <ion-label color="dark">Season</ion-label>
+      <ion-select [(ngModel)]="season" placeholder="Select One">
+        <ion-select-option [value]="2018">2018</ion-select-option>
+        <ion-select-option [value]="2019">2019</ion-select-option>
+        <ion-select-option [value]="2020">2020</ion-select-option>
+        <ion-select-option [value]="2021">2021</ion-select-option>
+        <ion-select-option [value]="2022">2022</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card> -->
+
+  <ion-grid class="grid-competition">
+    <ion-row *ngFor="let competition of groupedCompetition">
+      <ion-col size="12">
+        <ion-item-divider color="medium">
+          <ion-label> {{competition[0].area.name}} </ion-label>
+        </ion-item-divider>
+      </ion-col>
+
+      <ion-col size="12" sizeMd="4" sizeLg="3" *ngFor="let item of competition">
+        <ion-card [routerLink]="['/competition',item.id]">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img
+                [src]="item.emblemUrl || item.area.ensignUrl || 'https://image.makewebeasy.net/noimage.png'"
+              />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{item.name}}</h2>
+              <h3>Sigla: {{item.code}}</h3>
+              <p>Last update: {{item.lastUpdated | date:'dd/MM/yyyy'}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
