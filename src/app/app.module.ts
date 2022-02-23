@@ -10,7 +10,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './interceptors/header-interceptor';
 import { SharedModule } from './shared/shared.module';
 import player from 'lottie-web';
-import { HashLocationStrategy } from '@angular/common';
 export const playerFactory = () => player;
 
 @NgModule({
@@ -24,7 +23,7 @@ export const playerFactory = () => player;
     SharedModule,
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: HashLocationStrategy },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
