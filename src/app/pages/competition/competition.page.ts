@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Competition } from '../models/competition';
-import { CompetitionService } from '../services/competition/competition.service';
 import * as _ from 'lodash';
-import { HelperService } from '../services/helper.service';
+import { Competition } from 'src/app/models/competition';
+import { CompetitionService } from 'src/app/services/competition/competition.service';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-competition',

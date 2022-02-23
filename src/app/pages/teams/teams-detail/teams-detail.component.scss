@@ -1,0 +1,31 @@
+.basic-info {
+  display: flex;
+  gap: 16px;
+  flex-grow: 1;
+
+  ion-label {
+    background-color: var(--ion-color-light);
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
+.title {
+  color: var(--ion-color-primary);
+  font-weight: bold;
+}
+
+.subtitle {
+  font-weight: 600;
+  color: var(--ion-color-dark);
+}
+
+.tla {
+}
+
+.venue {
+  color: var(--ion-color-dark-tint);
+}
+
+.info-value {
+  color: var(--ion-color-dark-tint);
+}

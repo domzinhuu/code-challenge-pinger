@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { DateTime } from 'luxon';
 
 const SELECTED_SEASON = 'selected_season';
@@ -8,7 +9,7 @@ const SELECTED_SEASON = 'selected_season';
 })
 export class HelperService {
   private season: number;
-  constructor() {
+  constructor(public alertController: AlertController) {
     const localStorageSeason = localStorage.getItem(SELECTED_SEASON);
     this.season = localStorageSeason
       ? Number(localStorageSeason)
@@ -42,5 +43,16 @@ export class HelperService {
     }
 
     return percentage > 100 ? 100 : Number(percentage);
+  }
+
+  public async showAlert(title: string, message: string) {
+    const alert = await this.alertController.create({
+      header: 'Ops',
+      subHeader: title,
+      message,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 }

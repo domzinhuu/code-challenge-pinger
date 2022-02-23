@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule),
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'competition',
     loadChildren: () =>
-      import('./competition/competition.module').then(
+      import('./pages/competition/competition.module').then(
         (m) => m.CompetitionPageModule
       ),
   },
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'competitions/:id/teams/:season',
-    loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
+    loadChildren: () => import('./pages/teams/teams.module').then( m => m.TeamsPageModule)
   },
 ];
 

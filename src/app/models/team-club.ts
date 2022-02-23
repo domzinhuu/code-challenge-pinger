@@ -4,7 +4,7 @@ import { Player } from './booking';
 import { Competition } from './competition';
 
 export interface TeamClub {
-  id: NumberValueAccessor;
+  id: number;
   area: Area;
   name: string;
   shortName: string;

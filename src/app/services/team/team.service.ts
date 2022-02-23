@@ -23,7 +23,7 @@ export class TeamService {
       .pipe(map((res) => _.orderBy(res.teams, ['shortName'])));
   }
 
-  public getTeamsDetail(teamID: number): Observable<TeamClub> {
-    return this.httpClient.get<any>(`${environment.apiUrl}/team/${teamID}`);
+  public getTeamDetail(teamID: number): Observable<TeamClub> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/teams/${teamID}`);
   }
 }
