@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TeamClub } from 'src/app/models/team-club';
@@ -19,7 +20,7 @@ export class TeamService {
       .get<any>(
         `${environment.apiUrl}/competitions/${competitionID}/teams?season=${season}`
       )
-      .pipe(map((res) => res.teams));
+      .pipe(map((res) => _.orderBy(res.teams, ['shortName'])));
   }
 
   public getTeamsDetail(teamID: number): Observable<TeamClub> {

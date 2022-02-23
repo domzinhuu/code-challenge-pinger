@@ -20,7 +20,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'teams',
+    path: 'competitions/:id/teams/:season',
     loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
   },
 ];

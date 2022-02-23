@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Competition } from 'src/app/models/competition';
 import { Season } from 'src/app/models/season';
 import { CompetitionStanding } from 'src/app/models/standing';
@@ -18,7 +18,8 @@ export class CompetitionDetailPage implements OnInit {
   season: number;
   constructor(
     private activetedRoute: ActivatedRoute,
-    private helperService: HelperService
+    private helperService: HelperService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,5 +40,15 @@ export class CompetitionDetailPage implements OnInit {
     const end = new Date(endDate).getFullYear();
 
     return `${start} / ${end}`;
+  }
+
+  public viewAllTeams(season: number): void {
+    this.router.navigateByUrl(
+      `/competitions/${this.competition.id}/teams/${season}`
+    );
+  }
+
+  public getCurrentSeasonYear(date: string): number {
+    return new Date(date).getFullYear();
   }
 }

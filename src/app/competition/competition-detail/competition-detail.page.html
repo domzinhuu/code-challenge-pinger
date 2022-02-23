@@ -12,11 +12,14 @@
   <pg-competition-item
     [competition]="competition"
     [standing]="competitionStandings"
+    (action)="viewAllTeams(getCurrentSeasonYear(competition.currentSeason.endDate))"
   ></pg-competition-item>
 
   <ion-card>
     <ion-item color="tertiary">
-      <ion-label color="primary" class="text-bold">See latest seasons</ion-label>
+      <ion-label color="primary" class="text-bold"
+        >See latest seasons</ion-label
+      >
       <ion-select
         [(ngModel)]="season"
         placeholder="Select One"
@@ -34,5 +37,6 @@
   <pg-competition-item
     [pastSeason]="pastSeason"
     [standing]="competitionStandings"
+    (action)="viewAllTeams(getCurrentSeasonYear(pastSeason.endDate))"
   ></pg-competition-item>
 </ion-content>
