@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './interceptors/header-interceptor';
+import { SharedModule } from './shared/shared.module';
+import player from 'lottie-web';
+import { HashLocationStrategy } from '@angular/common';
+export const playerFactory = () => player;
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +21,10 @@ import { HeaderInterceptor } from './interceptors/header-interceptor';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: RouteReuseStrategy, useClass: HashLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

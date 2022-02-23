@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { DateTime } from 'luxon';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 const SELECTED_SEASON = 'selected_season';
 
@@ -9,6 +10,9 @@ const SELECTED_SEASON = 'selected_season';
 })
 export class HelperService {
   private season: number;
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  private loading$: Observable<boolean> = this.loadingSubject.asObservable();
+
   constructor(public alertController: AlertController) {
     const localStorageSeason = localStorage.getItem(SELECTED_SEASON);
     this.season = localStorageSeason
@@ -54,5 +58,17 @@ export class HelperService {
     });
 
     await alert.present();
+  }
+
+  public showLoading(): void {
+    this.loadingSubject.next(true);
+  }
+
+  public hideLoading(): void {
+    this.loadingSubject.next(false);
+  }
+
+  public loading(): Observable<boolean> {
+    return this.loading$;
   }
 }

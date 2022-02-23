@@ -1,0 +1,7 @@
+.team {
+  cursor: pointer;
+  &:hover {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+  }
+}
