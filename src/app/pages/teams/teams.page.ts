@@ -23,14 +23,11 @@ export class TeamsPage implements OnInit {
       this.seasonYear = Number(params.season);
     });
     this.teams = this.activatedRouter.snapshot.data.teams;
-
-    console.log(this.teams);
   }
 
   public goToTeamDetail(teamId: number): void {
     this.router.navigateByUrl(
       `/competitions/${this.competitionId}/teams/${this.seasonYear}/detail/${teamId}`
     );
-    console.log(this.competitionId, this.seasonYear);
   }
 }

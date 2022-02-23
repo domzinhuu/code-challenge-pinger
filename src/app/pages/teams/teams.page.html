@@ -18,7 +18,7 @@
         <ion-col size="12" sizeMd="4" *ngFor="let team of teams">
           <ion-item (click)="goToTeamDetail(team.id)">
             <ion-avatar slot="start">
-              <img [src]="team.crestUrl" />
+              <img [src]="team?.crestUrl" />
             </ion-avatar>
             <ion-label>{{team.shortName}}</ion-label>
             <ion-label class="text-bold" color="primary" slot="end"

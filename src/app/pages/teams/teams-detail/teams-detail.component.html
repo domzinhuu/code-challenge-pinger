@@ -12,12 +12,12 @@
     <ion-card-header>
       <ion-item>
         <ion-thumbnail slot="start">
-          <img [src]="team.crestUrl" [alt]="team.name" />
+          <img [src]="team?.crestUrl" [alt]="team?.name" />
         </ion-thumbnail>
         <ion-label>
-          <h2 class="title">{{ team.name }}</h2>
-          <h4 class="subtitle">Founded: {{ team.founded || "N/A" }}</h4>
-          <p class="venue">{{ team.venue || "----" }}</p>
+          <h2 class="title">{{ team?.name }}</h2>
+          <h4 class="subtitle">Founded: {{ team?.founded || "N/A" }}</h4>
+          <p class="venue">{{ team?.venue || "----" }}</p>
         </ion-label>
       </ion-item>
     </ion-card-header>
@@ -28,27 +28,27 @@
           <ion-col size="12" sizeMd="4" sizeLg="3">
             <ion-label class="tla" color="primary">
               <h2 class="bold">Abbreviation</h2>
-              <p class="info-value">{{ team.tla }}</p>
+              <p class="info-value">{{ team?.tla }}</p>
             </ion-label>
           </ion-col>
           <ion-col size="12" sizeMd="4" sizeLg="3">
             <ion-label color="primary">
               <h2>Club color</h2>
-              <p class="info-value">{{ team.clubColors }}</p>
+              <p class="info-value">{{ team?.clubColors }}</p>
             </ion-label>
           </ion-col>
           <ion-col size="12" sizeMd="4" sizeLg="3">
             <ion-label color="primary">
               <h2 class="text-bold">Website</h2>
-              <a class="info-value" [href]="team.website" target="_blank">{{
-                team.website
+              <a class="info-value" [href]="team?.website" target="_blank">{{
+                team?.website
               }}</a>
             </ion-label>
           </ion-col>
           <ion-col size="12" sizeMd="4" sizeLg="3">
             <ion-label color="primary">
               <h2>Address</h2>
-              <p class="info-value">{{ team.address }}</p>
+              <p class="info-value">{{ team?.address }}</p>
             </ion-label>
           </ion-col>
         </ion-row>
@@ -64,7 +64,7 @@
 
         <ion-list
           slot="content"
-          *ngIf="team.activeCompetitions && team.activeCompetitions.length"
+          *ngIf="team?.activeCompetitions && team?.activeCompetitions.length"
         >
           <ion-item *ngFor="let competition of team.activeCompetitions">
             <ion-avatar
@@ -86,7 +86,7 @@
         </ion-list>
         <ion-list
           slot="content"
-          *ngIf="!team.activeCompetitions || !team.activeCompetitions.length"
+          *ngIf="!team?.activeCompetitions || !team?.activeCompetitions.length"
         >
           <ion-item>
             <ion-label>No have squad for this team</ion-label>
@@ -99,8 +99,8 @@
           <ion-label>SQUAD </ion-label>
         </ion-item>
 
-        <ion-list slot="content" *ngIf="team.squad && team.squad.length">
-          <ion-item *ngFor="let player of team.squad">
+        <ion-list slot="content" *ngIf="team?.squad && team?.squad.length">
+          <ion-item *ngFor="let player of team?.squad">
             <ion-avatar slot="start">
               <ion-label class="text-bold" color="primary">{{
                 trimTeamPosition(player.position)
@@ -113,7 +113,7 @@
           </ion-item>
         </ion-list>
 
-        <ion-list slot="content" *ngIf="!team.squad || !team.squad.length">
+        <ion-list slot="content" *ngIf="!team?.squad || !team?.squad.length">
           <ion-item>
             <ion-label>No have squad for this team</ion-label>
           </ion-item>
