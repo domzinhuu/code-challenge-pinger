@@ -21,18 +21,18 @@
           }
         ],
         "@angular-eslint/component-selector": [
-          "error",
+          "off",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "pg",
             "style": "kebab-case"
           }
         ],
         "@angular-eslint/directive-selector": [
-          "error",
+          "off",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "pg",
             "style": "camelCase"
           }
         ]
