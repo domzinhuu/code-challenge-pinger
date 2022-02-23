@@ -10,4 +10,5 @@ export interface Competition {
   currentSeason: Season;
   seasons: Array<Season>;
   lastUpdated: string;
+  emblemUrl?: string;
 }
