@@ -1,0 +1,153 @@
+<div *ngIf="competition && !pastSeason">
+  <ion-card color="primary">
+    <ion-item color="primary">
+      <ion-icon name="calendar" color="light" slot="start"></ion-icon>
+      <ion-label color="light"
+        >Season:
+        <span class="text-bold">{{
+          competition.currentSeason.startDate | date: "yyyy"
+        }}</span>
+      </ion-label>
+      <ion-button
+        (click)="action.emit()"
+        color="light"
+        fill="outline"
+        slot="end"
+        >View all teams</ion-button
+      >
+    </ion-item>
+
+    <ion-card-content>
+      <div class="classification-info">
+        <ion-label class="champ-label" color="light">
+          Champion:
+          <img
+            *ngIf="competition.currentSeason.winner"
+            class="brand-champ"
+            [src]="competition.currentSeason.winner?.crestUrl"
+            alt="Champion"
+          />
+          <span class="text-bold">{{
+            competition.currentSeason.winner?.shortName || "N/A"
+          }}</span>
+        </ion-label>
+
+        <ion-label color="light">
+          Current Match:
+          <span class="text-bold">{{
+            competition.currentSeason.currentMatchday
+          }}</span>
+        </ion-label>
+      </div>
+
+      <div class="presentation">
+        <div class="presentation-date">
+          <p>Starting</p>
+          <p>{{ competition.currentSeason.startDate | date: "MM-dd-yyyy" }}</p>
+        </div>
+        <div class="presentation-progress">
+          <ion-label color="light"> progress {{ progressValue }}% </ion-label>
+          <ion-progress-bar color="light" [value]="progressValue / 100">
+          </ion-progress-bar>
+        </div>
+        <div class="presentation-date">
+          <p>Ending</p>
+          <p>{{ competition.currentSeason.endDate | date: "MM-dd-yyyy" }}</p>
+        </div>
+      </div>
+    </ion-card-content>
+    <ion-accordion-group>
+      <ion-accordion>
+        <ion-item color="warning" slot="header">
+          <ion-icon name="list-outline" slot="start"></ion-icon>
+          <ion-label>Standings </ion-label>
+        </ion-item>
+        <ion-list slot="content">
+          <ion-item color="light">
+            <table style="width: 100%">
+              <thead>
+                <tr>
+                  <th class="text-dark"></th>
+                  <th class="text-center text-primary">PV</th>
+                  <th class="text-center text-primary">W</th>
+                  <th class="text-center text-primary">L</th>
+                  <th class="text-center text-primary">D</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let item of standing.table" class="tr-focus">
+                  <td>{{ item.team.name }}</td>
+                  <td class="text-center standing-td">
+                    {{ item.points }}
+                  </td>
+                  <td class="text-center standing-td">
+                    {{ item.won }}
+                  </td>
+                  <td class="text-center standing-td">
+                    {{ item.lost }}
+                  </td>
+                  <td class="text-center standing-td">
+                    {{ item.draw }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </ion-item>
+        </ion-list>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-card>
+</div>
+
+<div *ngIf="pastSeason && !competition">
+  <ion-card color="light">
+    <ion-item color="light">
+      <ion-icon name="trophy" color="primary" slot="start"></ion-icon>
+      <ion-label color="primary"
+        >Season:
+        <span class="text-bold">{{ pastSeason.endDate | date: "yyyy" }}</span>
+      </ion-label>
+      <ion-button
+        (click)="action.emit()"
+        color="primary"
+        fill="outline"
+        slot="end"
+        >View all teams</ion-button
+      >
+    </ion-item>
+
+    <ion-card-content>
+      <div class="classification-info">
+        <ion-label class="champ-label" color="primary">
+          Champion:
+          <img
+            *ngIf="pastSeason.winner"
+            class="brand-champ"
+            [src]="pastSeason.winner?.crestUrl"
+            alt="Champion"
+          />
+          <span class="text-bold">{{
+            pastSeason.winner?.shortName || "N/A"
+          }}</span>
+        </ion-label>
+
+        <ion-label color="primary">
+          Matches:
+          <span class="text-bold">{{ pastSeason.currentMatchday }}</span>
+        </ion-label>
+      </div>
+
+      <div class="presentation">
+        <div class="presentation-date season-card">
+          <p>Started</p>
+          <p>{{ pastSeason.endDate | date: "MM-dd-yyyy" }}</p>
+        </div>
+        <div class="presentation-date season-card">
+          <p>Ended</p>
+          <p>{{ pastSeason.endDate | date: "MM-dd-yyyy" }}</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
