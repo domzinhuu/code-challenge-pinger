@@ -56,14 +56,14 @@
         </div>
       </div>
     </ion-card-content>
-    <ion-accordion-group>
+    <ion-accordion-group *ngIf="standing">
       <ion-accordion>
         <ion-item color="warning" slot="header">
           <ion-icon name="list-outline" slot="start"></ion-icon>
           <ion-label>Standings </ion-label>
         </ion-item>
         <ion-list slot="content">
-          <ion-item color="light">
+          <ion-item color="light" *ngIf="standing.table.length">
             <table style="width: 100%">
               <thead>
                 <tr>
@@ -93,6 +93,17 @@
                 </tr>
               </tbody>
             </table>
+          </ion-item>
+          <ion-item color="light" *ngIf="!standing.table.length">
+            <ion-label color="primary"
+              >Group:
+              <span class="text-bold">{{ standing.group }}</span></ion-label
+            >
+            <br />
+            <ion-label color="primary"
+              >STAGE:
+              <span class="text-bold">{{ standing.stage }}</span></ion-label
+            >
           </ion-item>
         </ion-list>
       </ion-accordion>
