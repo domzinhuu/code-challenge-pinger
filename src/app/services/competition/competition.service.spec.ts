@@ -7,6 +7,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { mockCompetitions } from '../../test/mocks/competition-mocks';
+import { HttpClient } from '@angular/common/http';
 
 describe('CompetitionService', () => {
   let httpTestingController: HttpTestingController;
@@ -15,6 +16,7 @@ describe('CompetitionService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      providers: [HttpClient],
     });
 
     httpTestingController = TestBed.inject(HttpTestingController);
