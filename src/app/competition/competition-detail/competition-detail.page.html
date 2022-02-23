@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{competition.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <h4 class="info-text">Actual season</h4>
+  <pg-competition-item
+    [competition]="competition"
+    [standing]="competitionStandings"
+  ></pg-competition-item>
+
+  <ion-card>
+    <ion-item color="light">
+      <ion-label color="primary" class="text-bold">See latest seasons</ion-label>
+      <ion-select
+        [(ngModel)]="season"
+        placeholder="Select One"
+        (ngModelChange)="changePastCompetition($event)"
+      >
+        <ion-select-option
+          *ngFor="let season of competition.seasons"
+          [value]="season.id"
+          >{{formatSeasonLabel(season.startDate,season.endDate)}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <pg-competition-item
+    [pastSeason]="pastSeason"
+    [standing]="competitionStandings"
+  ></pg-competition-item>
+</ion-content>
