@@ -4,6 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { Competition } from 'src/app/models/competition';
 import { CompetitionService } from 'src/app/services/competition/competition.service';
 import { HelperService } from 'src/app/services/helper.service';
+import { trackItems } from 'src/app/utils/functions';
 
 @Component({
   selector: 'app-competition',
@@ -13,6 +14,7 @@ import { HelperService } from 'src/app/services/helper.service';
 export class CompetitionPage implements OnInit {
   groupedCompetition: any[];
   season: number;
+  trackItemsNgFor = trackItems;
   constructor(
     private competitionService: CompetitionService,
     private helperService: HelperService

@@ -76,7 +76,10 @@
               </thead>
 
               <tbody>
-                <tr *ngFor="let item of standing.table" class="tr-focus">
+                <tr
+                  *ngFor="let item of standing.table; trackBy: trackItemsNgFor"
+                  class="tr-focus"
+                >
                   <td>{{ item.team.name }}</td>
                   <td class="text-center standing-td">
                     {{ item.points }}

@@ -26,7 +26,7 @@
         (ngModelChange)="changePastCompetition($event)"
       >
         <ion-select-option
-          *ngFor="let season of competition.seasons"
+          *ngFor="let season of competition.seasons;trackBy:trackItemsNgFor"
           [value]="season.id"
           >{{formatSeasonLabel(season.startDate,season.endDate)}}</ion-select-option
         >

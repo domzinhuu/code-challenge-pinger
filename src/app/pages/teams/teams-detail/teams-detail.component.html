@@ -66,7 +66,12 @@
           slot="content"
           *ngIf="team?.activeCompetitions && team?.activeCompetitions.length"
         >
-          <ion-item *ngFor="let competition of team.activeCompetitions">
+          <ion-item
+            *ngFor="
+              let competition of team.activeCompetitions;
+              trackBy: trackItemsNgFor
+            "
+          >
             <ion-avatar
               slot="start"
               style="
@@ -100,7 +105,9 @@
         </ion-item>
 
         <ion-list slot="content" *ngIf="team?.squad && team?.squad.length">
-          <ion-item *ngFor="let player of team?.squad">
+          <ion-item
+            *ngFor="let player of team?.squad; trackBy: trackItemsNgFor"
+          >
             <ion-avatar slot="start">
               <ion-label class="text-bold" color="primary">{{
                 trimTeamPosition(player.position)

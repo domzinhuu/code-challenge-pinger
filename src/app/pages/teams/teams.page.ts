@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { identity } from 'lodash';
 import { TeamClub } from 'src/app/models/team-club';
+import { trackItems } from 'src/app/utils/functions';
 
 @Component({
   selector: 'pg-teams',
@@ -12,6 +13,7 @@ export class TeamsPage implements OnInit {
   teams: TeamClub[];
   competitionId: number;
   seasonYear: number;
+  trackItemsNgFor = trackItems;
   constructor(
     private activatedRouter: ActivatedRoute,
     private router: Router

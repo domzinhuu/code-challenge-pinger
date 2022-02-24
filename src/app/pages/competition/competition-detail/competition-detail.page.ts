@@ -4,6 +4,7 @@ import { Competition } from 'src/app/models/competition';
 import { Season } from 'src/app/models/season';
 import { CompetitionStanding } from 'src/app/models/standing';
 import { HelperService } from 'src/app/services/helper.service';
+import { trackItems } from 'src/app/utils/functions';
 
 @Component({
   selector: 'app-competition-detail',
@@ -16,6 +17,7 @@ export class CompetitionDetailPage implements OnInit {
   pastSeason: Season;
   competitionStandingPastSeason: CompetitionStanding;
   season: number;
+  trackItemsNgFor = trackItems;
   constructor(
     private activetedRoute: ActivatedRoute,
     private helperService: HelperService,

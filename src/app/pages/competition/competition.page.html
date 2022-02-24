@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="light" fullscreen="true">
-<!--   <ion-card class="season-dropbox">
+  <!--   <ion-card class="season-dropbox">
     <ion-item>
       <ion-label color="dark">Season</ion-label>
       <ion-select [(ngModel)]="season" placeholder="Select One">
@@ -22,7 +22,9 @@
   </ion-card> -->
 
   <ion-grid class="grid-competition">
-    <ion-row *ngFor="let competition of groupedCompetition">
+    <ion-row
+      *ngFor="let competition of groupedCompetition;trackBy:trackItemsNgFor"
+    >
       <ion-col size="12">
         <ion-item-divider color="light">
           <ion-label> {{competition[0].area.name}} </ion-label>
